@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Onchain - Mint Your Skills on the Blockchain</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🧠 Score Onchain</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#quizzes" class="nav-link">Quizzes</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <button class="connect-wallet-btn">Connect Wallet</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Test Your Skills.<br>
+                        <span class="gradient-text">Mint Your Achievements.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Take skill assessments across various domains and mint your scores as NFTs on the blockchain. 
+                        Prove your expertise in IQ, coding, cooking, and more.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="quizzes/iq-quiz.html" class="btn btn-primary">Start IQ Quiz</a>
+                        <a href="#quizzes" class="btn btn-secondary">Browse All Quizzes</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-cards">
+                        <div class="skill-card brain">
+                            <div class="card-icon">🧠</div>
+                            <div class="card-title">IQ Test</div>
+                            <div class="card-score">150</div>
+                        </div>
+                        <div class="skill-card code">
+                            <div class="card-icon">💻</div>
+                            <div class="card-title">Coding</div>
+                            <div class="card-score">95%</div>
+                        </div>
+                        <div class="skill-card cooking">
+                            <div class="card-icon">👨‍🍳</div>
+                            <div class="card-title">Cooking</div>
+                            <div class="card-score">88%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Quiz Section -->
+        <section class="featured-quiz">
+            <div class="container">
+                <h2 class="section-title">Featured Quiz</h2>
+                <div class="quiz-card featured">
+                    <div class="quiz-header">
+                        <div class="quiz-icon">🧠</div>
+                        <div class="quiz-badge">Most Popular</div>
+                    </div>
+                    <div class="quiz-content">
+                        <h3>IQ Assessment Test</h3>
+                        <p>Test your cognitive abilities with our comprehensive 15-question IQ assessment. Covering pattern recognition, logical reasoning, spatial awareness, and verbal comprehension.</p>
+                        <div class="quiz-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Questions</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">~10</span>
+                                <span class="stat-label">Minutes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">2.4k</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                        </div>
+                        <a href="quizzes/iq-quiz.html" class="btn btn-primary">Take Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="quizzes-section">
+            <div class="container">
+                <h2 class="section-title">Available Quizzes</h2>
+                <div class="quiz-grid">
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">🧠</div>
+                            <div class="quiz-status available">Available</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>IQ Assessment</h3>
+                            <p>Comprehensive cognitive ability test</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <a href="quizzes/iq-quiz.html" class="btn btn-outline">Start Quiz</a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">💻</div>
+                            <div class="quiz-status coming-soon">Coming Soon</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>JavaScript Mastery</h3>
+                            <p>Test your JavaScript knowledge and skills</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-disabled" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">👨‍🍳</div>
+                            <div class="quiz-status coming-soon">Coming Soon</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>Culinary Knowledge</h3>
+                            <p>Test your cooking techniques and food knowledge</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-disabled" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">🎨</div>
+                            <div class="quiz-status coming-soon">Coming Soon</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>Design Principles</h3>
+                            <p>Assess your understanding of design fundamentals</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-disabled" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">📊</div>
+                            <div class="quiz-status coming-soon">Coming Soon</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>Data Analysis</h3>
+                            <p>Test your analytical and statistical skills</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-disabled" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <div class="quiz-icon">🌍</div>
+                            <div class="quiz-status coming-soon">Coming Soon</div>
+                        </div>
+                        <div class="quiz-content">
+                            <h3>Geography Expert</h3>
+                            <p>Challenge your knowledge of world geography</p>
+                            <div class="quiz-difficulty">
+                                <span class="difficulty-label">Difficulty:</span>
+                                <div class="difficulty-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-disabled" disabled>Coming Soon</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Choose a Quiz</h3>
+                            <p>Select from our variety of skill assessments and knowledge tests</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Complete the Test</h3>
+                            <p>Answer questions at your own pace with our intuitive interface</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Get Your Score</h3>
+                            <p>Receive detailed results and personalized feedback</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Mint to Blockchain</h3>
+                            <p>Create a permanent NFT certificate of your achievement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Preview -->
+        <section id="leaderboard" class="leaderboard-preview">
+            <div class="container">
+                <h2 class="section-title">Top Performers</h2>
+                <div class="leaderboard-card">
+                    <div class="leaderboard-header">
+                        <h3>🧠 IQ Assessment Leaderboard</h3>
+                        <a href="#" class="view-all-link">View All →</a>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item">
+                            <div class="rank">1</div>
+                            <div class="user-info">
+                                <div class="user-name">Anonymous Genius</div>
+                                <div class="user-wallet">0x1234...5678</div>
+                            </div>
+                            <div class="score">158</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">2</div>
+                            <div class="user-info">
+                                <div class="user-name">Brain Master</div>
+                                <div class="user-wallet">0x9876...4321</div>
+                            </div>
+                            <div class="score">152</div>
+                        </div>
+                        <div class="leaderboard-item">
+                            <div class="rank">3</div>
+                            <div class="user-info">
+                                <div class="user-name">Quick Thinker</div>
+                                <div class="user-wallet">0x5555...7777</div>
+                            </div>
+                            <div class="score">147</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About Score Onchain</h2>
+                    <p class="about-description">
+                        Score Onchain is the first platform that combines skill assessment with blockchain technology. 
+                        We believe that your achievements and expertise deserve permanent recognition. By minting your 
+                        test scores as NFTs, you create verifiable proof of your abilities that can be shared, 
+                        traded, or displayed across the web3 ecosystem.
+                    </p>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Secure & Verifiable</h3>
+                            <p>All scores are permanently recorded on the blockchain, ensuring authenticity</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Diverse Skills</h3>
+                            <p>Test everything from cognitive abilities to technical skills and creativity</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🌐</div>
+                            <h3>Web3 Integration</h3>
+                            <p>Seamlessly integrate with your favorite web3 applications and services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🧠 Score Onchain</h3>
+                    <p>Mint Your Skills on the Blockchain</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <a href="#quizzes">Quizzes</a>
+                        <a href="#leaderboard">Leaderboard</a>
+                        <a href="#about">About</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Score Onchain. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
