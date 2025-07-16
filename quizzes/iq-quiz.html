@@ -406,6 +406,143 @@
             border-style: dashed;
             color: #667eea;
         }
+
+        /* Detailed Results Styles */
+        .score-breakdown {
+            font-size: 1.4em;
+            color: #667eea;
+            font-weight: 600;
+            margin: 10px 0 20px 0;
+            text-align: center;
+        }
+
+        .detailed-results-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .detailed-results-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .perfect-score {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .perfect-score h3 {
+            color: white !important;
+            margin-bottom: 10px;
+        }
+
+        .wrong-answer-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #dc3545;
+        }
+
+        .question-header {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .question-title {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .answer-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .user-answer, .correct-answer {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .label {
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .answer-value {
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .answer-value.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .answer-value.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .explanation {
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .explanation-label {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.95em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .explanation p {
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .answer-comparison {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .question-header {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -750,7 +887,12 @@
             <div class="results" id="results">
                 <h2>Your IQ Test Results</h2>
                 <div class="iq-score" id="iqScore">--</div>
+                <div class="score-breakdown" id="scoreBreakdown"></div>
                 <p id="scoreDescription" style="font-size: 1.2em; margin: 20px 0;"></p>
+                
+                <div class="detailed-results-section" id="detailedResults">
+                    <!-- Detailed results will be generated here -->
+                </div>
                 
                 <div class="mint-section">
                     <h3 style="color: #667eea; margin-bottom: 15px;">🔗 Mint Your IQ Score with Score Onchain</h3>
@@ -786,6 +928,44 @@
             13: 'A', // 135° rotation
             14: 'A', // 21 (A=7, B=3, 7×3=21)
             15: 'B'  // n² - 1
+        };
+
+        // Answer explanations
+        const explanations = {
+            1: "The pattern follows a diagonal sequence. Reading diagonally from top-left to bottom-right: circle, square, triangle, then repeating. The missing piece should be a square (□).",
+            2: "This sequence follows the pattern n(n+1): 1×2=2, 2×3=6, 3×4=12, 4×5=20, 5×6=30, so 6×7=42.",
+            3: "The relationship is action to object. You 'read' a book, and you 'listen' to music. Both are the primary ways of consuming these forms of media.",
+            4: "The bottom-left shape is the odd one out because it has a square inside a circle, while all others have a circle inside various outer shapes.",
+            5: "From the given premises, we can only conclude that some roses 'might' fade quickly, since roses are flowers and some flowers fade quickly, but we don't know which flowers.",
+            6: "The pattern is that each number is squared: 3²=9, 5²=25, so 7²=49.",
+            7: "Drum is the odd one out because it's a percussion instrument, while violin, guitar, and harmonica are string/wind instruments that create sound through vibration of strings or air.",
+            8: "The pattern shows dots increasing by the sum of row and column numbers. Bottom-right position (row 3, column 3) should have 5 dots (●●●●●).",
+            9: "Each letter is assigned a number based on its position in a coding system: M=3, O=6, N=2. Following this pattern, S=7, so SOON = 7662.",
+            10: "This is the Fibonacci sequence where each number is the sum of the two preceding ones: 1+1=2, 1+2=3, 2+3=5, 3+5=8.",
+            11: "When folding the cross pattern into a cube with the center as bottom, the purple square becomes the top and the white square becomes the front face.",
+            12: "'Preceded' means 'came before.' The discovery was preceded by (came after) years of failed experiments, making this the logical choice.",
+            13: "The sequence shows a square with a circle rotating 45° each time. Following this pattern, the next rotation would be 135°.",
+            14: "Solving the system: A+B=10 and A-B=4 gives us A=7 and B=3. Therefore, A×B = 7×3 = 21.",
+            15: "The sequence follows n²-1 where n starts at 2: 2²-1=3, 3²-1=8, 4²-1=15, 5²-1=24, 6²-1=35."
+        };
+
+        // Question titles for reference
+        const questionTitles = {
+            1: "Pattern Recognition - Complete the sequence",
+            2: "Number Sequence - Find the next number",
+            3: "Verbal Analogy - Complete the analogy", 
+            4: "Spatial Reasoning - Find the odd one out",
+            5: "Logical Deduction - Draw conclusion from premises",
+            6: "Mathematical Pattern - Find the missing number",
+            7: "Word Association - Identify the different word",
+            8: "Visual Pattern - Complete the matrix",
+            9: "Abstract Reasoning - Decode the pattern",
+            10: "Numerical Reasoning - Continue the sequence",
+            11: "Spatial Rotation - Visualize 3D folding",
+            12: "Verbal Reasoning - Choose the best word",
+            13: "Pattern Completion - Complete the rotation sequence",
+            14: "Mathematical Logic - Solve the equation system",
+            15: "Abstract Pattern - Identify the rule"
         };
 
         function startQuiz() {
@@ -860,15 +1040,24 @@
             const baseScore = 85 + (correct / totalQuestions) * 30;
             const finalScore = Math.round(baseScore + timeBonus);
             
-            return Math.min(160, Math.max(70, finalScore)); // Cap between 70-160
+            return {
+                iq: Math.min(160, Math.max(70, finalScore)), // Cap between 70-160
+                correct: correct,
+                total: totalQuestions
+            };
         }
 
         function showResults() {
             document.getElementById('quizSection').style.display = 'none';
             document.getElementById('results').style.display = 'block';
             
-            const iqScore = calculateIQ();
+            const result = calculateIQ();
+            const iqScore = result.iq;
+            const correctCount = result.correct;
+            const totalCount = result.total;
+            
             document.getElementById('iqScore').textContent = iqScore;
+            document.getElementById('scoreBreakdown').textContent = `${correctCount} out of ${totalCount} questions correct`;
             
             let description = '';
             if (iqScore >= 140) {
@@ -886,6 +1075,69 @@
             }
             
             document.getElementById('scoreDescription').textContent = description;
+            
+            // Generate detailed results
+            generateDetailedResults();
+        }
+        
+        function generateDetailedResults() {
+            const detailedResults = document.getElementById('detailedResults');
+            let wrongAnswers = [];
+            
+            // Find wrong answers
+            for (let i = 1; i <= totalQuestions; i++) {
+                if (answers[i] !== correctAnswers[i]) {
+                    wrongAnswers.push({
+                        question: i,
+                        userAnswer: answers[i],
+                        correctAnswer: correctAnswers[i],
+                        title: questionTitles[i],
+                        explanation: explanations[i]
+                    });
+                }
+            }
+            
+            if (wrongAnswers.length === 0) {
+                detailedResults.innerHTML = `
+                    <div class="perfect-score">
+                        <h3>🎉 Perfect Score!</h3>
+                        <p>Congratulations! You answered all questions correctly. You demonstrated excellent cognitive abilities across all areas tested.</p>
+                    </div>
+                `;
+            } else {
+                let html = `
+                    <h3>📊 Detailed Results</h3>
+                    <p style="margin-bottom: 20px;">Review the questions you missed to learn and improve:</p>
+                `;
+                
+                wrongAnswers.forEach(wrong => {
+                    const optionLabels = { 'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D' };
+                    html += `
+                        <div class="wrong-answer-item">
+                            <div class="question-header">
+                                <span class="question-number">Question ${wrong.question}</span>
+                                <span class="question-title">${wrong.title}</span>
+                            </div>
+                            <div class="answer-comparison">
+                                <div class="user-answer">
+                                    <span class="label">Your Answer:</span>
+                                    <span class="answer-value incorrect">${wrong.userAnswer || 'No answer'}</span>
+                                </div>
+                                <div class="correct-answer">
+                                    <span class="label">Correct Answer:</span>
+                                    <span class="answer-value correct">${wrong.correctAnswer}</span>
+                                </div>
+                            </div>
+                            <div class="explanation">
+                                <span class="explanation-label">Explanation:</span>
+                                <p>${wrong.explanation}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                detailedResults.innerHTML = html;
+            }
         }
 
         function isValidEthereumAddress(address) {
